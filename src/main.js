@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import "@/style/style.scss";
 import Home from "@/pages/home.vue";
 import Love from "@/pages/love.vue";
+import Birth from "@/pages/birth.vue";
 import App from "@/App.vue";
 // 引入 pinia
 import { createPinia } from "pinia";
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: "/", component: Home },
     { path: "/home", component: Home },
     { path: "/love", component: Love },
+    { path: "/birthday", component: Birth },
     { path: "/*", component: Home },
   ],
 });
