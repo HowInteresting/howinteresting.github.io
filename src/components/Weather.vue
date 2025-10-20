@@ -13,13 +13,13 @@
     <span class="sm-hidden">{{ weatherData.weather.windpower }}&nbsp;级</span>
   </div>
   <div class="weather" v-else>
-    <span>今天天气真好</span>
+    <span>今晚月色很美</span>
   </div>
 </template>
 
 <script setup>
 import { getAdcode, getWeather, getOtherWeather } from "@/api";
-import { Error } from "@icon-park/vue-next";
+// import { Error } from "@icon-park/vue-next";
 
 // 高德开发者 Key
 const mainKey = import.meta.env.VITE_WEATHER_KEY;
@@ -91,21 +91,21 @@ const getWeatherData = async () => {
     }
   } catch (error) {
     console.error("天气信息获取失败:" + error);
-    onError("天气信息获取失败");
+    // onError("天气信息获取失败");
   }
 };
 
 // 报错信息
-const onError = (message) => {
-  ElMessage({
-    message,
-    icon: h(Error, {
-      theme: "filled",
-      fill: "#efefef",
-    }),
-  });
-  console.error(message);
-};
+// const onError = (message) => {
+//   ElMessage({
+//     message,
+//     icon: h(Error, {
+//       theme: "filled",
+//       fill: "#efefef",
+//     }),
+//   });
+//   console.error(message);
+// };
 
 onMounted(() => {
   // 调用获取天气
