@@ -1,5 +1,5 @@
 <template>
-  <FullIframe value="/birth/index.html"></FullIframe>
+  <FullIframe value="/birthday/index.html"></FullIframe>
 </template>
 
 <script setup>
