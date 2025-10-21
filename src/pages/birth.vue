@@ -1,7 +1,9 @@
 <template>
-  <iframe width="100vw" height="100vh" frameborder="0" src="/birth/index.html"></iframe>
+  <FullIframe value="/birth/index.html"></FullIframe>
 </template>
 
-<script setup></script>
+<script setup>
+import FullIframe from "@/components/FullIframe.vue";
+</script>
 
 <style lang="scss" scoped></style>

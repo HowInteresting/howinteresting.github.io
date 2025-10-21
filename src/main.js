@@ -20,10 +20,16 @@ const router = createRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/home", component: Home },
-    { path: "/love", component: Love },
-    { path: "/birthday", component: Birth },
-    { path: "/*", component: Home },
+    { path: "/love", name: "一封情书", component: Love },
+    { path: "/birthday", name: "生日快乐", component: Birth },
+    // 将匹配所有内容并将其放在 `route.params.pathMatch` 下
+    { path: "/:pathMatch(.*)*", component: Love },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.name ? to.name : import.meta.env.VITE_SITE_NAME; // 根据路由名称动态设置标题
+  next();
 });
 
 app.use(pinia);
