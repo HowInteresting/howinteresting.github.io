@@ -1,5 +1,5 @@
 <template>
-  <FullIframe value="/love/index.html"></FullIframe>
+  <FullIframe value="/love/index.html" is-scale></FullIframe>
 </template>
 
 <script setup>
