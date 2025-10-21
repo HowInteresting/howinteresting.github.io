@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import "@/style/style.scss";
 import Home from "@/pages/home.vue";
 import Love from "@/pages/love.vue";
-import Birth from "@/pages/birth.vue";
+import Birth from "@/pages/birthday.vue";
 import App from "@/App.vue";
 // 引入 pinia
 import { createPinia } from "pinia";
