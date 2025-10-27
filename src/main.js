@@ -21,9 +21,14 @@ const router = createRouter({
     { path: "/", component: Home },
     { path: "/home", component: Home },
     { path: "/love", name: "一封情书", component: Love },
-    { path: "/birthday", name: "生日快乐", component: Birth },
+    { path: "/lovewy", name: "一封情书", component: Love },
+    { path: "/mylove", name: "一封情书", component: Love },
+    { path: "/iloveu", name: "一封情书", component: Love },
+    { path: "/wy", name: "一封情书", component: Love },
+    { path: "/lxr", name: "一封情书", component: Love },
     // 将匹配所有内容并将其放在 `route.params.pathMatch` 下
-    { path: "/:pathMatch(.*)*", component: Love },
+    { path: "/:pathMatch(.*)", name: "一封情书", component: Love },
+    { path: "/birthday", name: "生日快乐", component: Birth },
   ],
 });
 
