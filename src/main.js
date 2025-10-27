@@ -20,12 +20,12 @@ const router = createRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/home", component: Home },
-    { path: "/love", name: "一封情书", component: Love },
-    { path: "/lovewy", name: "一封情书", component: Love },
-    { path: "/mylove", name: "一封情书", component: Love },
-    { path: "/iloveu", name: "一封情书", component: Love },
-    { path: "/wy", name: "一封情书", component: Love },
-    { path: "/lxr", name: "一封情书", component: Love },
+    { path: "/love", name: "♥", component: Love },
+    { path: "/lovewy", name: "♥wy", component: Love },
+    { path: "/mylove", name: "我的爱", component: Love },
+    { path: "/iloveu", name: "i♥u", component: Love },
+    { path: "/wy", name: "wy", component: Love },
+    { path: "/lxr", name: "我", component: Love },
     // 将匹配所有内容并将其放在 `route.params.pathMatch` 下
     { path: "/:pathMatch(.*)", name: "一封情书", component: Love },
     { path: "/birthday", name: "生日快乐", component: Birth },
