@@ -357,26 +357,27 @@ html, body {
     }
 }
 
-.button-style1, .button-style2 {
+.button-style {
     position: absolute;
     top: 40%;
     opacity: 1;
     z-index: 100;
+    left: 50%;
+    margin-left:-87px;
+    opacity:0;
 }
 
 .button-style1 {
-	position:absolute;
-	top:50%;
-    left: 50%;
-    margin-left:-87px;
-    opacity:0;
+	top:0%;
 }
 .button-style2 {
-	position:absolute;
+    top:20%;
+}
+.button-style3 {
+	top:40%;
+}
+.button-style4 {
     top:60%;
-    margin-left:-87px;
-    left: 50%;
-    opacity:0;
 
 }
 .name{

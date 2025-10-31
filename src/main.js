@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import "@/style/style.scss";
 import Home from "@/pages/home.vue";
+import Mulu from "@/pages/mulu.vue";
 import Love from "@/pages/love.vue";
 import LoveStory from "@/pages/lovestory.vue";
 import Birth from "@/pages/birthday.vue";
@@ -24,6 +25,7 @@ const router = createRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/home", component: Home },
+    { path: "/mulu", component: Mulu },
     // ❤️
     { path: "/love", name: "♥", component: Love },
     { path: "/lovewy", name: "♥wy", component: Love },
