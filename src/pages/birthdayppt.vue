@@ -1,5 +1,5 @@
 <template>
-  <FullIframe value="/birthdayppt/index.html"></FullIframe>
+  <FullIframe value="/srkl/index.html"></FullIframe>
 </template>
 
 <script setup>
