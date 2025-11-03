@@ -39,8 +39,8 @@ const router = createRouter({
     { path: "/lovestory", name: "爱情故事", component: LoveStory },
     { path: "/:pathMatch(.*)*", name: "一封情书", component: LoveStory },
     // 生日快乐
-    { path: "/birthday", name: "生日快乐", component: BirthPPT },
-    { path: "/srkl", name: "生日快乐呀", component: Birth },
+    { path: "/birthday", name: "生日快乐", component: Birth },
+    { path: "/srkl", name: "生日快乐呀", component: BirthPPT },
     { path: "/cake", name: "生日蛋糕", component: BirthCake },
     { path: "/dangao", name: "生日蛋糕", component: BirthCake },
     // 浪漫烟花
