@@ -1,5 +1,5 @@
 <template>
-  <FullIframe value="/firework/index.html"></FullIframe>
+  <FullIframe value="/yanhua/index.html"></FullIframe>
 </template>
 
 <script setup>

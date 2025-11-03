@@ -39,9 +39,9 @@
             <span class="say">了然物我两相忘</span><br />
             <span class="say">高歌犹爱思归引</span><br />
             <span class="say">我合著你难分离</span><br />
-            <span class="say">从初直到曲成时</span><br />
-            <span class="say">望今生永不分离</span><br />
-            <span class="say">水遥山远谩相思</span><br />
+            <span class="say">回看桃李都无色</span><br />
+            <span class="say">且将闲兴寄渔蓑</span><br />
+            <span class="say">西园嘉瑞格和鸣</span><br />
             <br />
             <span class="say">我可以陪你去看星星</span><br />
             <span class="say">不用再多说明</span><br />
@@ -76,6 +76,9 @@
           document.getElementById("media").paused = false;
           document.getElementById("media").loop = true;
           document.getElementById("media").play();
+        });
+        document.getElementById("clock").addEventListener("click", function () {
+          window.parent.location.href = window.location.origin + "/mulu";
         });
 
         if (!canvas[0].getContext) {

@@ -105,7 +105,7 @@
       <img src="./birth.jpg" id="logo" />
     </div>
     <canvas class="canvas" width="1820" height="905"></canvas>
-    <p class="text" style="color: #ed3073">
+    <p class="text" style="color: #ed3073" id="mulu">
       生日快乐
       <br />
       <span id="span_dt_dt"></span>
@@ -130,6 +130,10 @@
       }
 
       show_date_time();
+
+      document.getElementById("mulu").addEventListener("click", function () {
+        window.parent.location.href = window.location.origin + "/mulu";
+      });
     </script>
     <script>
       var S = {
