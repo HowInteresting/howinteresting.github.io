@@ -37,7 +37,8 @@ const router = createRouter({
     { path: "/letter", name: "情书", component: Love },
     // 将匹配所有内容并将其放在 `route.params.pathMatch` 下
     { path: "/lovestory", name: "爱情故事", component: LoveStory },
-    { path: "/:pathMatch(.*)*", name: "一封情书", component: LoveStory },
+    { path: "/404", name: "密码对了才能进", component: LoveStory },
+    { path: "/:pathMatch(.*)*", redirect: "/404" },
     // 生日快乐
     { path: "/birthday", name: "生日快乐", component: Birth },
     { path: "/srkl", name: "生日快乐呀", component: BirthPPT },
