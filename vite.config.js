@@ -7,6 +7,7 @@ import vue from "@vitejs/plugin-vue";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import viteCompression from "vite-plugin-compression";
+import viteImagemin from "vite-plugin-imagemin";
 
 // https://vitejs.dev/config/
 export default ({ mode }) =>
@@ -89,6 +90,33 @@ export default ({ mode }) =>
           ],
         },
       }),
+      viteImagemin({
+        gifsicle: {
+          optimizationLevel: 7,
+          interlaced: false,
+        },
+        optipng: {
+          optimizationLevel: 7,
+        },
+        mozjpeg: {
+          quality: 20,
+        },
+        pngquant: {
+          quality: [0.8, 0.9],
+          speed: 4,
+        },
+        svgo: {
+          plugins: [
+            {
+              name: "removeViewBox",
+            },
+            {
+              name: "removeEmptyAttrs",
+              active: false,
+            },
+          ],
+        },
+      }),
       viteCompression(),
     ],
     server: {
@@ -106,7 +134,7 @@ export default ({ mode }) =>
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern',
+          api: "modern",
           additionalData: `@use "./src/style/global.scss" as *;`,
           silenceDeprecations: ["legacy-js-api"],
         },
