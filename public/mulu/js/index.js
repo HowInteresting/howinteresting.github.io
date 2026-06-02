@@ -3,8 +3,8 @@ $("#login-button").click(function (event) {
   var pwd = document.getElementById("pwd").value;
   //修改密码请改此处
   if (
-    (userName == "wy" || userName == "lxr") &&
-    (pwd == "lxr520" || pwd == "wy520" || pwd == "20250629" || pwd == "19981103")
+    (userName == "xyq" || userName == "lxr") &&
+    (pwd == "lxr520" || pwd == "xyq520" || pwd == "20260307" || pwd == "19980307")
   ) {
     event.preventDefault();
     $("form").fadeOut(500);
