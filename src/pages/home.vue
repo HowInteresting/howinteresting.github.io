@@ -25,10 +25,6 @@
       >
         <component :is="store.mobileOpenState ? CloseSmall : HamburgerButton" />
       </Icon>
-      <!-- 页脚 -->
-      <!-- <Transition name="fade" mode="out-in">
-        <Footer class="f-ter" v-show="!store.backgroundShow && !store.setOpenState" />
-      </Transition> -->
     </main>
   </Transition>
 </template>
@@ -42,11 +38,9 @@ import Loading from "@/components/Loading.vue";
 import MainLeft from "@/views/Main/Left.vue";
 import MainRight from "@/views/Main/Right.vue";
 import Background from "@/components/Background.vue";
-// import Footer from "@/components/Footer.vue";
 import Box from "@/views/Box/index.vue";
 import MoreSet from "@/views/MoreSet/index.vue";
 import cursorInit from "@/utils/cursor.js";
-import config from "@/../package.json";
 
 const store = mainStore();
 
@@ -233,12 +227,6 @@ onBeforeUnmount(() => {
         left: calc(50% - 25px);
       }
     }
-    .f-ter {
-      top: 675px; // 721px - 46px
-      @media (min-width: 391px) {
-        padding-left: 6px;
-      }
-    }
   }
   @media (max-width: 390px) {
     overflow-x: auto;
@@ -247,9 +235,6 @@ onBeforeUnmount(() => {
     }
     .menu {
       left: 167.5px; // 391px * 0.5 - 28px
-    }
-    .f-ter {
-      width: 391px;
     }
     @media (min-height: 721px) {
       overflow-y: hidden;
