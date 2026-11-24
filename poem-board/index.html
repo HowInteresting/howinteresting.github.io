@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#1d352d" />
+  <meta name="description" content="把古诗变成木框黑板字图片。纯本地排版渲染，免费、无需登录、诗句不上传。" />
+  <meta property="og:title" content="黑板诗笺 · 把古诗写成一块黑板" />
+  <meta property="og:description" content="选一首诗，生成木框黑板字图片。免费、无需登录、诗句不上传。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>黑板诗笺 · 把古诗写成一块黑板</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317352c'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f3efe2' font-family='serif'%3E%E8%AF%97%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="黑板诗笺首页">
+        <span class="brand-seal">诗</span>
+        <span class="brand-text">
+          <strong>黑板诗笺</strong>
+          <em>把古诗，写成一块黑板</em>
+        </span>
+      </a>
+      <div class="topbar-note">
+        <span class="pulse"></span>
+        本地生成 · 免费 · 诗句不上传
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="stage-card" aria-label="黑板预览与导出">
+        <div class="stage-head">
+          <div class="stage-meta">
+            <span class="eyebrow">LIVE PREVIEW</span>
+            <span class="stage-size" id="sizeLabel">1800 × 1800</span>
+          </div>
+          <button class="icon-btn" id="btnExpand" type="button" title="放大预览">
+            <span aria-hidden="true">⛶</span>
+            <span class="sr-only">放大预览</span>
+          </button>
+        </div>
+
+        <div class="canvas-shell" id="canvasShell">
+          <canvas id="board" width="1800" height="1800" aria-label="古诗黑板字预览"></canvas>
+          <div class="canvas-loading" id="loading">
+            <span class="chalk-spinner"></span>
+            <span>正在磨墨铺纸…</span>
+          </div>
+        </div>
+
+        <div class="stage-actions">
+          <button class="btn btn-chalk" id="btnDownload" type="button">
+            <span>下载图片</span>
+            <small id="downloadHint">JPG · 2×</small>
+          </button>
+          <button class="btn btn-ghost-light" id="btnCopy" type="button">复制图片</button>
+          <button class="btn btn-ghost-light" id="btnShare" type="button">复制分享链接</button>
+        </div>
+
+        <p class="stage-tip">点击画面可放大查看 · 所有处理都在你的浏览器里完成</p>
+      </section>
+
+      <aside class="panel" aria-label="编辑面板">
+        <div class="panel-scroll">
+          <section class="panel-section">
+            <div class="section-title">
+              <span class="section-index">01</span>
+              <h2>写一首诗</h2>
+              <button class="text-btn" id="btnReset" type="button">恢复示例</button>
+            </div>
+
+            <div class="preset-row" id="presets" aria-label="名篇示例"></div>
+
+            <label class="field">
+              <span>诗题</span>
+              <input id="title" type="text" maxlength="24" placeholder="静夜思" autocomplete="off" />
+            </label>
+
+            <label class="field">
+              <span>作者</span>
+              <input id="author" type="text" maxlength="20" placeholder="唐 · 李白" autocomplete="off" />
+            </label>
+
+            <label class="field">
+              <span class="field-line">
+                <span>诗句</span>
+                <button class="text-btn small" id="btnSmart" type="button">智能分行</button>
+              </span>
+              <textarea id="body" rows="5" maxlength="600" spellcheck="false" placeholder="床前明月光，疑是地上霜。&#10;举头望明月，低头思故乡。"></textarea>
+            </label>
+            <p class="hint">每行一句；用 <code>**诗句**</code> 标出想用彩色粉笔写的重点。</p>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-title">
+              <span class="section-index">02</span>
+              <h2>黑板与木框</h2>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">黑板颜色</div>
+              <div class="swatches" id="boardSwatches"></div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">木框颜色</div>
+              <div class="swatches" id="woodSwatches"></div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">粉笔颜色</div>
+              <div class="swatches compact" id="chalkSwatches"></div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">重点句粉笔</div>
+              <div class="swatches compact" id="accentSwatches"></div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-title">
+              <span class="section-index">03</span>
+              <h2>版式与落款</h2>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">画幅</div>
+              <div class="seg" id="aspectSeg" role="group" aria-label="画幅比例">
+                <button type="button" data-value="3:2">3 : 2</button>
+                <button type="button" data-value="4:3">4 : 3</button>
+                <button type="button" data-value="1:1">1 : 1</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">对齐</div>
+              <div class="seg" id="alignSeg" role="group" aria-label="文字对齐">
+                <button type="button" data-value="center">居中</button>
+                <button type="button" data-value="left">左对齐</button>
+              </div>
+            </div>
+
+            <label class="control-group range-group">
+              <span class="control-label">行距 <output id="lineHeightOut">1.9×</output></span>
+              <input id="lineHeight" type="range" min="1.55" max="2.35" step="0.05" value="1.9" />
+            </label>
+
+            <div class="control-group">
+              <div class="control-label">图片格式</div>
+              <div class="seg" id="formatSeg" role="group" aria-label="图片格式">
+                <button type="button" data-value="jpg">JPG · 适合分享</button>
+                <button type="button" data-value="png">PNG · 最高画质</button>
+              </div>
+              <p class="hint format-hint" id="formatHint">JPG 约 1 MB，发微信更快；PNG 约 10 MB。</p>
+            </div>
+
+            <label class="field">
+              <span>落款（可留空）</span>
+              <input id="footer" type="text" maxlength="18" placeholder="手写 · 小瑞" autocomplete="off" />
+            </label>
+
+            <div class="switch-list">
+              <label class="switch-row">
+                <span><b>盖一枚闲章</b><small>右下角的朱红小印</small></span>
+                <input id="seal" type="checkbox" />
+                <i aria-hidden="true"></i>
+              </label>
+              <label class="field seal-text-field" id="sealTextField">
+                <span>印文（默认取作者名）</span>
+                <input id="sealText" type="text" maxlength="4" placeholder="李白" autocomplete="off" />
+              </label>
+              <label class="switch-row">
+                <span><b>角落小画</b><small>月、竹、梅，粉笔淡彩</small></span>
+                <select id="illustration" aria-label="角落小画">
+                  <option value="none">不画</option>
+                  <option value="moon">月亮</option>
+                  <option value="bamboo">竹枝</option>
+                  <option value="plum">梅花</option>
+                </select>
+              </label>
+              <label class="switch-row">
+                <span><b>粉笔与板擦</b><small>黑板下沿的小道具</small></span>
+                <input id="props" type="checkbox" />
+                <i aria-hidden="true"></i>
+              </label>
+              <label class="switch-row">
+                <span><b>标题划线</b><small>手写感的粉笔横线</small></span>
+                <input id="underline" type="checkbox" />
+                <i aria-hidden="true"></i>
+              </label>
+              <label class="switch-row">
+                <span><b>落款日期</b><small>左下角写今天的日期</small></span>
+                <input id="showDate" type="checkbox" />
+                <i aria-hidden="true"></i>
+              </label>
+            </div>
+          </section>
+
+          <div class="panel-foot">
+            <p>纯本地渲染，不调用 AI 接口，不产生费用。字体为开源的「马善政毛笔楷书」。</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-foot">
+      <span>黑板诗笺</span>
+      <span class="foot-dot">·</span>
+      <span>自己留着，也送给朋友</span>
+      <span class="foot-spacer"></span>
+      <span>Ma Shan Zheng Font · SIL OFL 1.1</span>
+    </footer>
+  </div>
+
+  <dialog id="zoomDialog" class="zoom-dialog">
+    <div class="zoom-inner">
+      <button class="zoom-close" id="btnCloseZoom" type="button" aria-label="关闭预览">×</button>
+      <canvas id="zoomCanvas" aria-label="放大后的黑板字"></canvas>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
