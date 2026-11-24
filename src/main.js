@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import "@/style/style.scss";
 import Home from "@/pages/home.vue";
 import Firework from "@/pages/firework.vue";
+import Poem from "@/pages/poem.vue";
 import App from "@/App.vue";
 // 引入 pinia
 import { createPinia } from "pinia";
@@ -20,6 +21,7 @@ const router = createRouter({
     { path: "/", component: Home },
     { path: "/firework", name: "浪漫烟花", component: Firework },
     { path: "/yanhua", name: "带你看烟花", component: Firework },
+    { path: "/poem", name: "黑板诗笺", component: Poem },
     { path: "/:pathMatch(.*)*", redirect: "/" },
   ],
 });
