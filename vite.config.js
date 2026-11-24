@@ -122,6 +122,21 @@ export default ({ mode }) =>
     server: {
       port: "3000",
       open: true,
+      proxy: {
+        // 本地开发时代理 AI 接口，避免 http 源被免费接口拦截
+        "/ai-api": {
+          target: "https://text.pollinations.ai",
+          changeOrigin: true,
+          // Pollinations 对带 Origin 的浏览器请求校验 Turnstile，转发前移除
+          configure: (proxy) => {
+            proxy.on("proxyReq", (proxyReq) => {
+              proxyReq.removeHeader("origin");
+              proxyReq.removeHeader("referer");
+            });
+          },
+          rewrite: (path) => path.replace(/^\/ai-api/, ""),
+        },
+      },
     },
     resolve: {
       alias: [

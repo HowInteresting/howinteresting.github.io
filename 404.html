@@ -1,40 +1,129 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LOVE STORY</title>
-    <link rel="stylesheet" type="text/css" href="./lovestory/css/index.css" />
+    <title>404 · 页面走丢了</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: #101014;
+        background-image: radial-gradient(60vw 60vw at 50% -10%, rgba(255, 255, 255, 0.08), transparent 70%);
+        color: #e8e8ea;
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 460px;
+        text-align: center;
+        animation: rise 0.6s ease both;
+      }
+
+      .code {
+        font-family: "SF Mono", Menlo, Consolas, monospace;
+        font-size: clamp(72px, 18vw, 112px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.04em;
+        background: linear-gradient(180deg, #ffffff, #7d7d8a);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      h1 {
+        margin-top: 18px;
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+      .desc {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #8f8f9c;
+        word-break: break-all;
+      }
+
+      .desc code {
+        font-family: "SF Mono", Menlo, Consolas, monospace;
+        color: #c9c9d4;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .links a {
+        padding: 10px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        color: #e8e8ea;
+        font-size: 14px;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          transform 0.2s;
+      }
+
+      .links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card {
+          animation: none;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="htmleaf-container">
-      <div class="wrapper">
-        <div class="container">
-          <h1>LOVE STORY</h1>
-
-          <form class="form">
-            <input id="userName" name="userName" type="text" placeholder="姓名" />
-            <input id="pwd" name="pwd" type="password" placeholder="密码" />
-            <button type="submit" id="login-button">进入</button>
-          </form>
-        </div>
-        <ul class="bg-bubbles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-    </div>
-
-    <script src="./lovestory/js/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="./lovestory/js/index.js" type="text/javascript"></script>
+    <main class="card">
+      <p class="code">404</p>
+      <h1>这页纸好像被风吹走了</h1>
+      <p class="desc">找不到 <code id="path">这个地址</code>，去下面这些页面逛逛吧</p>
+      <nav class="links">
+        <a href="/">首页</a>
+        <a href="/firework">浪漫烟花</a>
+        <a href="/poem">黑板诗笺</a>
+        <a href="/ai">AI 助手</a>
+      </nav>
+    </main>
+    <script>
+      const path = document.getElementById("path");
+      if (location.pathname && location.pathname !== "/") {
+        path.textContent = location.pathname;
+      }
+    </script>
   </body>
 </html>
