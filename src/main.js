@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import "@/style/style.scss";
 import Home from "@/pages/home.vue";
 import Firework from "@/pages/firework.vue";
@@ -18,7 +18,8 @@ const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 
 const router = createRouter({
-  history: createWebHistory(),
+  // GitHub Pages 等纯静态托管无法把深链接回退给 SPA，使用 hash 路由彻底避免 404
+  history: createWebHashHistory(),
   routes: [
     { path: "/", component: Home },
     { path: "/firework", name: "浪漫烟花", component: Firework },
