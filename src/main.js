@@ -4,6 +4,8 @@ import "@/style/style.scss";
 import Home from "@/pages/home.vue";
 import Firework from "@/pages/firework.vue";
 import Poem from "@/pages/poem.vue";
+import Ai from "@/pages/ai.vue";
+import NotFound from "@/pages/notFound.vue";
 import App from "@/App.vue";
 // 引入 pinia
 import { createPinia } from "pinia";
@@ -22,7 +24,8 @@ const router = createRouter({
     { path: "/firework", name: "浪漫烟花", component: Firework },
     { path: "/yanhua", name: "带你看烟花", component: Firework },
     { path: "/poem", name: "黑板诗笺", component: Poem },
-    { path: "/:pathMatch(.*)*", redirect: "/" },
+    { path: "/ai", name: "AI 助手", component: Ai },
+    { path: "/:pathMatch(.*)*", name: "页面走丢了", component: NotFound },
   ],
 });
 
